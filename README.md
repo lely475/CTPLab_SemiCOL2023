@@ -1,4 +1,7 @@
 # Multi-task learning for tissue segmentation and tumor detection in colorectal cancer histology slides
+
+Lydia A. Schoenpflug, Maxime W. Lafarge, Anja L. Frei, Viktor H. Koelzer, Department of Pathology and Molecular Pathology, University Hospital and University of Zurich
+
 The semi-supervised learning for CRC detection ([SemiCOL](https://www.semicol.org/)) challenge 2023 provides partially annotated data to encourage the development of automated solutions for tissue segmentation and tumor detection. We propose a U-Net based multi-task model combined with channel-wise and image-statistics-based color augmentations, as well as test-time augmentation (see Figure 1), as a candidate solution to the SemiCOL challenge. Our approach achieved a multi-task Dice score of .8655 (Arm 1) and .8515 (Arm 2) for tissue segmentation and AUROC of .9725  (Arm 1) and 0.9750 (Arm 2) for tumor detection on the challenge validation set.
 
 ![inference_pipeline3](https://user-images.githubusercontent.com/62755943/230338160-5ae2bdb8-640a-4fe3-9ee9-eff9fdf2bde0.png)
