@@ -10,19 +10,20 @@ pip install -r requirements.txt
 ```
 
 ## Generate tiles for training
-Add location of the data folder (parent folder of `01_MANUAL` and `02_WEAK`) and desired output folder, where the generated tiles will be stored. Approximate required storage for the tiles is 175 GB.
+Add location of the data folder (parent folder of `01_MANUAL` and `02_WEAK`) and desired output folder, where the generated tiles will be stored. Approximate required storage for the tiles is 175 GB. 
 ```
-run_data_generation.py --o path/to/output/dir --data path/to/data/dir
+python3 src/run_data_generation.py --o path/to/output/dir --data path/to/data/dir
 ```
 
 ## Train model
-Train model on tiled challenge training set, tensorboard outputs and ckpts are logged to the output folder. 
+Train model on tiled challenge training set, tensorboard outputs and ckpts are logged to the output folder. Arm configuration can be set as 1 or 2, to train with image-statistics-based augmentation using [references from SemiCOL only](CTPLab_SemiCOL2023/references_arm1) or [SemiCOL and MIDOG references](CTPLab_SemiCOL2023/references_arm2). 
 ```
-run_train_multi_task_learner.py --o path/to/output/dir
+python3 src/run_train_multi_task_learner.py --o path/to/output/dir --arm 1 or 2
 ```
 
-## Validate model on internal validation set
-To validate the model on the internal validation set, provide an output folder to which the results will be logged.
+## Checkpoints
+The following checkpoints are provided in the `ckpts` folder:
 ```
-run_validation.py --o path/to/output/dir
+--arm1.ckpt: Model trained on the challenge training set, using references from the SemiCOL challenge for image-statistics-based augmentation.
+--arm2.ckpt: Model trained on the challenge training set, using references from the SemiCOL and MIDOG challenge for image-statistics-based augmentation.
 ```
