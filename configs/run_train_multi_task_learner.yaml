@@ -1,0 +1,47 @@
+# Experiment configs:
+experiment:
+  seed: 2023
+  num_workers: 8
+  full_set: True
+  batch_size: 128
+  epochs: 100
+  patch_size: 300
+  sgm_class_weights: [0.1, 0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.0]
+
+# Model params
+model:
+  input_size: 260
+  arch:
+    num_classes: 10
+    start_filter: 32
+
+# Paths
+paths:
+  train_sgm_csv: "metadata_csvs/train_sgm.csv"
+  val_sgm_csv: "metadata_csvs/val_sgm.csv"
+  train_tum_det_csv: "metadata_csvs/train_tum_det.csv"
+  val_tum_det_csv: "metadata_csvs/val_tum_det.csv"
+  output_path: ""
+
+# Loss params
+loss:
+  sgm_weight: 0.5
+
+# Optimizer params
+optimizer:
+  name: SGD
+  lr: 0.2
+  scheduler: ExponentialLR
+  scheduler_params: {gamma: 0.97}
+  params: {
+    momentum: 0.9,
+    nesterov: True,
+    weight_decay: 0.000005,
+  }
+
+# Data augmentation params
+data_augmentation:
+  aug_probability: 0.7
+  zoom_factor: 0.1
+  bright_contrast_variation: 0.2
+  img_stat_ref_images: ""
